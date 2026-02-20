@@ -11,7 +11,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: transparent; 
             color: #1e293b;
-            line-height: 1.5;
+            line-height: 1.4;
             margin: 0;
             padding: 0;
         }
@@ -20,13 +20,12 @@
         }
         input[type="range"] {
             accent-color: #1d4ed8;
-            height: 12px;
+            height: 10px;
         }
         input:focus {
             outline: 3px solid #60a5fa;
             outline-offset: 2px;
         }
-        /* Removes browser-specific arrows on number inputs */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -38,36 +37,36 @@
 
     <!-- Main Fluid Container -->
     <div class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-        <div class="p-6 md:p-10 lg:p-12">
-            <header class="mb-8 border-b border-gray-100 pb-6">
-                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">Healthcare Resource Impact Calculator</h1>
-                <p class="text-lg text-gray-600 leading-relaxed">
+        <div class="p-5 md:p-8 lg:p-10">
+            <header class="mb-6 border-b border-gray-100 pb-4">
+                <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 tracking-tight">CareLoop Potential Savings Calculator</h1>
+                <p class="text-base text-gray-600 leading-relaxed">
                     Evaluate the annual clinical and financial benefits of mental health intervention programmes.
                 </p>
             </header>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
                 <!-- Left Side: Inputs (Span 7) -->
-                <div class="lg:col-span-7 space-y-6">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">Programme Variables</h2>
+                <div class="lg:col-span-7 space-y-4">
+                    <h2 class="text-lg font-bold text-gray-800 mb-2">Programme Variables</h2>
                     
                     <!-- Input A -->
-                    <div class="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <div class="flex justify-between items-end mb-4">
-                            <label for="inputA" class="text-lg font-bold text-gray-800">Service users with diagnosis</label>
-                            <span id="valA" class="text-xl font-black text-blue-700 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">800</span>
+                    <div class="bg-white p-4 rounded-2xl shadow-soft border border-gray-100">
+                        <div class="flex justify-between items-end mb-3">
+                            <label for="inputA" class="text-base font-bold text-gray-800">Service users with diagnosis</label>
+                            <span id="valA" class="text-lg font-black text-blue-700 bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-100">800</span>
                         </div>
                         <input type="range" id="inputA" min="100" max="5000" step="10" value="800" 
-                               class="w-full bg-gray-200 rounded-lg appearance-none cursor-pointer mb-2"
+                               class="w-full bg-gray-200 rounded-lg appearance-none cursor-pointer mb-1"
                                aria-label="Number of service users">
-                        <p class="text-sm text-gray-500 italic">Total number of service users with a diagnosis of Psychosis or Schizophrenia.</p>
+                        <p class="text-xs text-gray-500 italic">Total service users with Psychosis or Schizophrenia.</p>
                     </div>
 
                     <!-- Input B -->
-                    <div class="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <div class="flex justify-between items-end mb-4">
-                            <label for="inputB" class="text-lg font-bold text-gray-800">Average annual relapse rate</label>
-                            <span id="valB" class="text-xl font-black text-blue-700 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">25%</span>
+                    <div class="bg-white p-4 rounded-2xl shadow-soft border border-gray-100">
+                        <div class="flex justify-between items-end mb-3">
+                            <label for="inputB" class="text-base font-bold text-gray-800">Average annual relapse rate</label>
+                            <span id="valB" class="text-lg font-black text-blue-700 bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-100">25%</span>
                         </div>
                         <input type="range" id="inputB" min="1" max="90" step="1" value="25" 
                                class="w-full bg-gray-200 rounded-lg appearance-none cursor-pointer"
@@ -75,10 +74,10 @@
                     </div>
 
                     <!-- Input C -->
-                    <div class="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <div class="flex justify-between items-end mb-4">
-                            <label for="inputC" class="text-lg font-bold text-gray-800">Average cost of a relapse</label>
-                            <span id="valC" class="text-xl font-black text-blue-700 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">£25,000</span>
+                    <div class="bg-white p-4 rounded-2xl shadow-soft border border-gray-100">
+                        <div class="flex justify-between items-end mb-3">
+                            <label for="inputC" class="text-base font-bold text-gray-800">Average cost of a relapse</label>
+                            <span id="valC" class="text-lg font-black text-blue-700 bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-100">£25,000</span>
                         </div>
                         <input type="range" id="inputC" min="15000" max="40000" step="500" value="25000" 
                                class="w-full bg-gray-200 rounded-lg appearance-none cursor-pointer"
@@ -86,51 +85,51 @@
                     </div>
 
                     <!-- Input D -->
-                    <div class="bg-white p-6 rounded-2xl shadow-soft border border-gray-100">
-                        <label for="inputD" class="block text-lg font-bold text-gray-800 mb-3">Average length of inpatient stay</label>
+                    <div class="bg-white p-4 rounded-2xl shadow-soft border border-gray-100">
+                        <label for="inputD" class="block text-base font-bold text-gray-800 mb-2">Average length of inpatient stay</label>
                         <div class="relative max-w-xs">
                             <input type="number" id="inputD" value="82" 
-                                   class="w-full p-3 text-lg border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none text-gray-900 font-bold pr-16"
+                                   class="w-full p-2 text-base border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none text-gray-900 font-bold pr-14"
                                    aria-label="Inpatient stay duration">
-                            <span class="absolute right-4 top-3 text-gray-400 font-medium">Days</span>
+                            <span class="absolute right-3 top-2 text-sm text-gray-400 font-medium">Days</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Side: Results (Span 5) -->
-                <div class="lg:col-span-5 bg-blue-700 rounded-3xl p-8 md:p-10 flex flex-col justify-center text-white shadow-xl relative overflow-hidden">
-                    <h2 class="text-blue-200 font-extrabold uppercase tracking-widest text-xs mb-8">Estimated Annual Impact</h2>
+                <div class="lg:col-span-5 bg-blue-700 rounded-3xl p-6 md:p-8 flex flex-col justify-center text-white shadow-xl relative overflow-hidden">
+                    <h2 class="text-blue-200 font-extrabold uppercase tracking-widest text-[10px] mb-6">Estimated Annual Impact</h2>
                     
-                    <div class="space-y-10">
+                    <div class="space-y-6">
                         <!-- Result 1 -->
                         <div>
-                            <p class="text-blue-100 text-lg font-medium mb-1">Relapses prevented each year</p>
-                            <p id="resPrevented" class="text-5xl md:text-6xl font-black">50</p>
+                            <p class="text-blue-100 text-base font-medium mb-0.5">Relapses prevented each year</p>
+                            <p id="resPrevented" class="text-3xl md:text-4xl lg:text-5xl font-black">50</p>
                         </div>
 
                         <!-- Result 2 -->
                         <div>
-                            <p class="text-blue-100 text-lg font-medium mb-1">Total annual cost saving</p>
-                            <p id="resSavings" class="text-5xl md:text-6xl font-black">£1,250,000</p>
+                            <p class="text-blue-100 text-base font-medium mb-0.5">Total annual cost saving</p>
+                            <p id="resSavings" class="text-3xl md:text-4xl lg:text-5xl font-black">£1,250,000</p>
                         </div>
 
                         <!-- Result 3 -->
                         <div>
-                            <p class="text-blue-100 text-lg font-medium mb-1">Bed days avoided</p>
-                            <p id="resBedDays" class="text-5xl md:text-6xl font-black">4,100</p>
+                            <p class="text-blue-100 text-base font-medium mb-0.5">Bed days avoided</p>
+                            <p id="resBedDays" class="text-3xl md:text-4xl lg:text-5xl font-black">4,100</p>
                         </div>
                     </div>
 
                     <!-- Footnote Note -->
-                    <div class="mt-12 pt-8 border-t border-blue-600/50">
-                        <div class="flex items-start gap-3">
-                            <div class="bg-blue-600 p-1 rounded-md mt-1">
-                                <svg class="w-4 h-4 text-blue-100" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="mt-8 pt-6 border-t border-blue-600/50">
+                        <div class="flex items-start gap-2">
+                            <div class="bg-blue-600 p-1 rounded-md mt-0.5 shrink-0">
+                                <svg class="w-3 h-3 text-blue-100" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <p class="text-sm text-blue-100 leading-relaxed">
-                                Results are based on an intervention programme achieving a <strong>25% reduction</strong> in total expected relapses.
+                            <p class="text-xs text-blue-100 leading-tight">
+                                Results are based on CareLoop integration achieving a <strong>25% reduction</strong> in expected relapses each year. 
                             </p>
                         </div>
                     </div>
@@ -168,28 +167,23 @@
             const C = parseFloat(inputC.value) || 0;
             const D = parseFloat(inputD.value) || 0;
 
-            // Update display labels
             valA.textContent = A.toLocaleString('en-GB');
             valB.textContent = B_pct + '%';
             valC.textContent = '£' + C.toLocaleString('en-GB');
 
-            // Logic: (A * B) * 0.25 reduction
             const prevented = (A * B) * 0.25;
             const savings = prevented * C;
             const bedDays = prevented * D;
 
-            // Update results
             resPrevented.textContent = formatNumber(prevented);
             resSavings.textContent = formatCurrency(savings);
             resBedDays.textContent = formatNumber(bedDays);
         }
 
-        // Event listeners for real-time calculation
         [inputA, inputB, inputC, inputD].forEach(el => {
             el.addEventListener('input', calculate);
         });
 
-        // Initialize on load
         window.addEventListener('DOMContentLoaded', calculate);
     </script>
 </body>
