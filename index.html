@@ -87,9 +87,17 @@
       border-radius: 999px;
     }
 
-    input[type="number"]{ font-variant-numeric: tabular-nums; }
+    input[type="number"]{ 
+      font-variant-numeric: tabular-nums; 
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button, 
+    input[type="number"]::-webkit-inner-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+
     input[type="number"]:focus-visible{ outline: 3px solid var(--focus); outline-offset: 2px; }
-    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{ -webkit-appearance: none; margin: 0; }
 
     .panel{
       background: linear-gradient(160deg, var(--panel), var(--teal-2));
@@ -100,15 +108,7 @@
     }
 
     .panel::before{
-      content:"";
-      position: absolute;
-      inset: -120px -120px auto auto;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(237,167,7,0.22), rgba(237,167,7,0.00) 62%);
-      transform: rotate(18deg);
-      pointer-events: none;
-      z-index: 0;
+      content: none;
     }
 
     .panel-content{
@@ -120,9 +120,12 @@
     }
 
     .big-number{ font-size: clamp(26px, 4.2vw, 44px); line-height: 1.05; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-    .kicker{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(233, 253, 255, 0.82); font-weight: 800; }
-    .label{ font-size: 14px; font-weight: 700; color: rgba(15, 23, 42, 0.90); }
-    .minmax{ display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; color: rgba(71, 85, 105, 0.85); font-size: 11px; font-variant-numeric: tabular-nums; }
+    
+    .kicker{ font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(233, 253, 255, 0.82); font-weight: 800; }
+    .label{ font-size: 16px; font-weight: 700; color: rgba(15, 23, 42, 0.90); }
+    
+    /* Font under slider bars made larger */
+    .minmax{ display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; color: rgba(71, 85, 105, 0.85); font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; }
 
     .metric-label-row{
       display: inline-flex;
@@ -230,14 +233,20 @@
       <div class="p-4 sm:p-6 lg:p-7" style="background: var(--bg);">
         <header class="card p-4 sm:p-5 mb-4 sm:mb-6">
           <div class="flex items-start justify-between gap-4 flex-wrap">
-            <div class="min-w-[220px]">
+            <div class="min-w-[220px] flex-1">
               <h1 class="title font-extrabold" style="color: var(--purple);">CareLoop Savings Calculator</h1>
-              <p class="subtitle mt-2">Estimate annual clinical and financial impact from mental health intervention programmes.</p>
+              <p class="subtitle mt-2">
+                The savings calculator is based upon the assumptions listed on the right hand side which comes from national studies taking aggregated data from across England’s Mental Health Trusts.
+                <br><br>
+                If you have trust specific data for particular cohorts around rate of relapse, cost of relapse or average length of stay, please adjust the relevant toggle accordingly to understand estimated annual impact.
+              </p>
             </div>
-            <div class="shrink-0">
-              <div class="rounded-2xl px-3 py-2 border" style="border-color: rgba(75,48,84,0.18); background: rgba(75,48,84,0.06);">
-                <p class="text-xs font-semibold" style="color: rgba(75,48,84,0.85);">Assumption</p>
-                <p class="text-xs mt-1" style="color: rgba(15,23,42,0.75);">50% reduction in expected relapses</p>
+            <div class="shrink-0 max-w-xs">
+              <div class="rounded-2xl px-4 py-3 border" style="border-color: rgba(75,48,84,0.18); background: rgba(75,48,84,0.06);">
+                <p class="text-xs font-bold" style="color: var(--purple);">Assumptions:</p>
+                <p class="text-xs mt-1 leading-relaxed" style="color: rgba(15,23,42,0.75);">
+                  To power this calculator, several evidence-based assumptions have been applied. You can hover over the (i) icon next to each one for more information.
+                </p>
               </div>
             </div>
           </div>
@@ -245,10 +254,6 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
           <section class="lg:col-span-7 space-y-4">
-            <div class="flex items-center justify-between">
-              <h2 class="section-title">Programme variables</h2>
-              <button id="resetBtn" type="button" class="text-xs font-bold px-3 py-2 rounded-xl border" style="border-color: rgba(8,132,159,0.22); background: rgba(8,132,159,0.08); color: var(--teal);">Reset</button>
-            </div>
             
             <div class="card p-4 sm:p-5 shadow-soft">
               <div class="flex items-end justify-between gap-3 flex-wrap mb-3">
@@ -367,7 +372,6 @@
     const resPrevented = document.getElementById('resPrevented');
     const resSavings = document.getElementById('resSavings');
     const resBedDays = document.getElementById('resBedDays');
-    const resetBtn = document.getElementById('resetBtn');
 
     function formatCurrency(num) { return '£' + Math.round(num).toLocaleString('en-GB'); }
     function formatNumber(num) { return Math.round(num).toLocaleString('en-GB'); }
@@ -409,14 +413,6 @@
 
     [inputA, inputB, inputC, inputD].forEach(el => {
       el.addEventListener('input', calculate);
-    });
-
-    resetBtn.addEventListener('click', () => {
-      inputA.value = defaults.A;
-      inputB.value = defaults.B;
-      inputC.value = defaults.C;
-      inputD.value = defaults.D;
-      calculate();
     });
 
     window.addEventListener('DOMContentLoaded', calculate);
